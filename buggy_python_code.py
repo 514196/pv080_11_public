@@ -5,11 +5,10 @@
 import base64
 import subprocess
 import flask
-import cPickle
 
 
 # Input injection
-def transcode_file(request, filename):
+def transcode_file(filename):
     """
     x
     :param request: x
@@ -22,14 +21,15 @@ def transcode_file(request, filename):
 
 
 # Assert statements
-def authorize(request, user):
+def authorize(user):
     """
     x
     :param request: x
     :param user: x
     :return: x
     """
-    assert user.is_admin, 'user does not have access'
+    if not user.is_admin:
+        print("user does not have access")
     # secure code...
 
 
@@ -52,6 +52,10 @@ def import_urlib_version(version):
     :param version: x
     :return: x
     """
+
+    if not version.isdigit():
+        return
+
     exec("import urllib%s as urllib" % version)
 
 
