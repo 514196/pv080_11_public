@@ -46,7 +46,7 @@ class RunBinSh:
         return subprocess.Popen, (('/bin/sh',),)
 
 
-def import_urlib_version(version):
+def import_urlib_version(version: str):
     """
     x
     :param version: x
@@ -56,7 +56,9 @@ def import_urlib_version(version):
     if not version.isdigit():
         return
 
-    exec("import urllib%s as urllib" % version)
+    number: int = int(version)
+
+    exec("import urllib%s as urllib" % number)
 
 
 def index():
